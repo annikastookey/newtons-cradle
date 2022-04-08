@@ -1,5 +1,5 @@
 export class Controller {
   constructor() {
-    console.log("constructing Controller");
+    // console.log("constructing Controller");
   }
 }

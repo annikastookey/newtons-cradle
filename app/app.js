@@ -1,24 +1,22 @@
-import { Model } from "./model/model.js";
-import { View } from "./view/view.js";
-import { Controller } from "./controller/controller.js";
+import * as model from "./model/model.js";
+import * as view from "./view/view.js";
 
-export class App {
-  constructor() {
-    console.log("constructing app");
-    this.model = new Model();
-    this.view = new View();
-    this.controller = new Controller();
-    this.run();
+function loop(timeNow) {
+  let timePrior = timeNow;
+  requestAnimationFrame(_loop);
+
+  function _loop(timeNow) {
+    let timeChange = timeNow - timePrior;
+    model.run(timeChange);
+    view.run();
+    timePrior = timeNow;
+    requestAnimationFrame(_loop);
   }
-  run() {
-    let timePrior = 0;
-    requestAnimationFrame(loop.bind(this));
-    function loop(timeNow) {
-      let timeChange = timeNow - timePrior;
-      this.model.run(timeChange);
-      this.view.run();
-      timePrior = timeNow;
-      requestAnimationFrame(loop.bind(this));
-    }
-  }
+}
+
+export function run() {
+  console.log("running App");
+  model.init(50, 1, 1, 5);
+  view.init();
+  requestAnimationFrame(loop);
 }
