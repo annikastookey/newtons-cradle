@@ -1,4 +1,6 @@
 import { modelAspectRatio } from "../model/model.js";
+import { ballNum } from "../model/model.js";
+import { balls } from "../model/model.js";
 let can;
 let con;
 
@@ -17,13 +19,13 @@ export function init() {
 
 function resize() {
   let viewAspectRatio = innerWidth / innerHeight;
-  console.log(
-    "resizing view",
-    innerWidth,
-    innerHeight,
-    viewAspectRatio,
-    modelAspectRatio
-  );
+  // console.log(
+  //   "resizing view",
+  //   innerWidth,
+  //   innerHeight,
+  //   viewAspectRatio,
+  //   modelAspectRatio
+  // );
   if (viewAspectRatio > modelAspectRatio) {
     console.log("vAR > mAR");
     can.width = Math.floor(innerHeight * modelAspectRatio);
@@ -31,14 +33,17 @@ function resize() {
     can.height = innerHeight;
   } else {
     console.log("vAR < mAR");
-    can.height = Math.floor(innerWidth / modelAspectRatio);
     can.style.left = 0;
     can.width = innerWidth;
+    can.height = innerHeight;
   }
 }
 
 export function run() {
   // console.log("running View");
   con.clearRect(0, 0, can.width, can.height);
-  con.fillRect(0, 0, can.width, can.height);
+  // con.fillRect(0, 0, can.width, can.height);
+  for (let i = 0; i < ballNum; i++) {
+    balls[i].draw(con);
+  }
 }

@@ -16,7 +16,7 @@ function loop(timeNow) {
 
 export function run() {
   console.log("running App");
-  model.init(50, 1, 1, 5);
+  model.init(200, 1, 50, 5);
   view.init();
   requestAnimationFrame(loop);
 }
