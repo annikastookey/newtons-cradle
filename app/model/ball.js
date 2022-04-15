@@ -1,3 +1,5 @@
+import { shinyBall } from "../view/view.js";
+
 export class Ball {
   constructor(
     anchorX,
@@ -17,22 +19,34 @@ export class Ball {
     this.ballRadius = ballRadius;
     this.angularVelocity = 0;
     this.angularAcceleration = 0.000001;
+    this.distance;
   }
+
   draw(con) {
     this.con = con;
-    this.con.strokestyle = "blue";
+    this.con.strokeStyle = "rgb(50, 50, 50)";
     con.translate(this.anchorX, this.anchorY);
-    con.fillRect(-10, -10, 20, 20);
     con.rotate(this.angle);
     con.beginPath();
     con.moveTo(0, 0);
     con.lineTo(this.stringLength, 0);
     con.stroke();
-    con.beginPath();
-    con.arc(this.stringLength, 0, this.ballRadius, 0, 2 * Math.PI);
+    con.translate(this.stringLength, 0);
+    con.rotate(-this.angle);
+    con.drawImage(
+      shinyBall,
+      -this.ballRadius,
+      -this.ballRadius,
+      2 * this.ballRadius,
+      2 * this.ballRadius
+    );
+    con.rotate(this.angle);
+    // con.beginPath();
+    // con.arc(this.stringLength, 0, this.ballRadius, 0, 2 * Math.PI);
+    con.translate(-this.stringLength, 0);
     con.rotate(-this.angle);
     con.translate(-this.anchorX, -this.anchorY);
-    con.stroke();
+    // con.stroke();
   }
   update(timeChange) {
     this.timeChange = timeChange;

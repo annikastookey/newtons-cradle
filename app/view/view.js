@@ -3,9 +3,11 @@ import { ballNum } from "../model/model.js";
 import { balls } from "../model/model.js";
 let can;
 let con;
+export let shinyBall;
 
 export function init() {
   console.log("initializing View");
+  shinyBall = document.getElementById("shinyBall");
   document.getElementsByTagName("html")[0].style = "width: 100%; height: 100%;";
   document.body.style =
     "width: 100%; height: 100%; margin: 0; overflow: hidden;";
@@ -42,6 +44,13 @@ function resize() {
 export function run() {
   // console.log("running View");
   con.clearRect(0, 0, can.width, can.height);
+  con.fillStyle = "black";
+  con.fillRect(
+    balls[0].anchorX - balls[0].ballRadius,
+    0,
+    2 * balls[0].ballRadius * balls.length,
+    balls[0].anchorY
+  );
   // con.fillRect(0, 0, can.width, can.height);
   for (let i = 0; i < ballNum; i++) {
     balls[i].draw(con);
