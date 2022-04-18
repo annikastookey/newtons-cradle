@@ -1,5 +1,7 @@
 import { shinyBall } from "../view/view.js";
 
+const metalClick = new Audio("./app/model/click.mp3");
+
 export class Ball {
   constructor(
     anchorX,
@@ -12,9 +14,7 @@ export class Ball {
     this.anchorX = anchorX;
     this.anchorY = anchorY;
     this.stringLength = stringLength;
-    console.log(this.stringLength);
     this.angle = startingAngle;
-    console.log(this.angle);
     this.ballMass = ballMass;
     this.ballRadius = ballRadius;
     this.angularVelocity = 0;
@@ -47,6 +47,9 @@ export class Ball {
     con.rotate(-this.angle);
     con.translate(-this.anchorX, -this.anchorY);
     // con.stroke();
+  }
+  playClick() {
+    metalClick.play();
   }
   update(timeChange) {
     this.timeChange = timeChange;

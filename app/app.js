@@ -1,5 +1,6 @@
 import * as model from "./model/model.js";
 import * as view from "./view/view.js";
+import * as controller from "./controller/controller.js";
 
 function loop(timeNow) {
   let timePrior = timeNow;
@@ -15,8 +16,15 @@ function loop(timeNow) {
 }
 
 export function run() {
-  console.log("running App");
-  model.init(200, 1, 50, 5);
-  view.init();
+  window.onload = () => {
+    console.log("running App");
+    model.init(200, 1, 50, 5);
+    view.init();
+    controller.init();
+  };
+  // requestAnimationFrame(loop);
+}
+
+export function start() {
   requestAnimationFrame(loop);
 }

@@ -9,7 +9,6 @@ let modelHeight;
 export let modelAspectRatio;
 
 import { Ball } from "./ball.js";
-import { String } from "./string.js";
 
 function collisionDetection(ballLeft, ballRight) {
   return ballLeft.angle < ballRight.angle;
@@ -54,6 +53,7 @@ export function run(timeChange) {
       }
       let nextBall = balls[i - 1];
       if (collisionDetection(nextBall, ball)) {
+        ball.playClick();
         nextBall.angularVelocity += ball.angularVelocity;
         ball.angularVelocity = 0;
         ball.angle = Math.PI / 2;
@@ -64,6 +64,7 @@ export function run(timeChange) {
       }
       let nextBall = balls[i + 1];
       if (collisionDetection(ball, nextBall)) {
+        ball.playClick();
         nextBall.angularVelocity += ball.angularVelocity;
         ball.angularVelocity = 0;
         ball.angle = Math.PI / 2;

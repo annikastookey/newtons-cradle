@@ -13,7 +13,7 @@ export function init() {
     "width: 100%; height: 100%; margin: 0; overflow: hidden;";
   can = document.createElement("canvas");
   con = can.getContext("2d");
-  can.style = "position: absolute; top: 0;";
+  can.style = "position: absolute; top: 0; z-index: 1;";
   document.body.appendChild(can);
   window.onresize = resize;
   resize();
