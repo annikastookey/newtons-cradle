@@ -19,7 +19,6 @@ export class Ball {
     this.ballRadius = ballRadius;
     this.angularVelocity = 0;
     this.angularAcceleration = 0.000001;
-    this.distance;
   }
 
   draw(con) {

@@ -30,7 +30,7 @@ export function init(_stringLength, _ballMass, _ballRadius, _ballNum) {
         ballRadius + stringLength + 2 * i * ballRadius,
         ballRadius,
         stringLength,
-        i === 0 ? Math.PI * (5 / 6) : Math.PI / 2,
+        Math.PI / 2, //i === 0 ? Math.PI * (5 / 6) :
         ballMass,
         ballRadius
       )
@@ -38,6 +38,27 @@ export function init(_stringLength, _ballMass, _ballRadius, _ballNum) {
     // strings.push(new String(stringLength));
   }
   //TODO
+}
+
+export function getBallIndex(clickX, clickY) {
+  for (let i = 0; i < balls.length; i++) {
+    let ball = balls[i];
+    let ballX = ball.stringLength * Math.cos(ball.angle) + ball.anchorX;
+    let ballY = ball.stringLength * Math.sin(ball.angle) + ball.anchorY;
+    console.log("ball", ballX, ballY);
+    console.log("click", clickX, clickY);
+    let dX = clickX - ballX;
+    let dY = clickY - ballY;
+    let dSq = dX * dX + dY * dY;
+    if (dSq < ball.ballRadius * ball.ballRadius) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+export function moveBall() {
+  console.log("moving ball");
 }
 
 export function run(timeChange) {

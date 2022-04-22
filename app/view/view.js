@@ -1,7 +1,7 @@
 import { modelAspectRatio } from "../model/model.js";
 import { ballNum } from "../model/model.js";
 import { balls } from "../model/model.js";
-let can;
+export let can;
 let con;
 export let shinyBall;
 
