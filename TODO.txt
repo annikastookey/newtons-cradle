@@ -1,3 +1,4 @@
 1. find a better favicon/edit current one
 2. rethink canvas height
 3. solver relative aspect drawing ratio
+4. fix mouseAngle when dragging into other balls

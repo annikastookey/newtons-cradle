@@ -7,6 +7,7 @@ export let ballNum;
 let modelWidth;
 let modelHeight;
 export let modelAspectRatio;
+let isSwinging = false;
 
 import { Ball } from "./ball.js";
 
@@ -63,6 +64,9 @@ export function moveBall() {
 
 export function run(timeChange) {
   //TO DO
+  if (!isSwinging) {
+    return;
+  }
   for (let ball of balls) {
     ball.update(timeChange);
   }
@@ -92,4 +96,12 @@ export function run(timeChange) {
       }
     }
   }
+}
+
+export function setBallPosition(ball, angle) {
+  ball.angle = angle + Math.PI / 2;
+}
+
+export function startSwinging() {
+  isSwinging = true;
 }
