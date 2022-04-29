@@ -10,34 +10,38 @@ import {
 
 let ballDragged = null;
 let allowDrag = true;
+let dragDirection = 0;
 
 export function init() {
   console.log("initializing Controller");
   document.getElementById("startButton").addEventListener("click", () => {
     console.log("button click");
     document.getElementById("startButton").style.display = "none";
+    // document.getElementById("menuButton").style.display = "initial"; trying to only make the button visible once start button is clicked
     start();
   });
+  // document.getElementById("menuButton").addEventListener("click", () => {
+  //   console.log("menu click");
+  //   userInput();
+  // });
   can.addEventListener("mousedown", (e) => {
     if (!allowDrag) {
       return;
     }
     let ballI = getBallIndex(e.clientX, e.clientY);
-    if (ballI !== 0) {
+    if (ballI !== 0 && ballI !== balls.length - 1) {
       return;
     }
     ballDragged = balls[ballI];
+    dragDirection = ballI ? 1 : -1;
   });
   can.addEventListener("mouseup", (e) => {
     if (ballDragged) {
-      // TO DO - handle release of ball
-      // ie. start the animation with ball in this position
-      // ball[i].angle = ball[i].stringLength / (ball[i.stringLength - ()])
-      // do i need to add an update function to the model? there's one on the ball, so could I just pass this information on the ball's position to that function?
+      ballDragged = null;
+      dragDirection = 0;
+      allowDrag = false;
+      startSwinging();
     }
-    ballDragged = null;
-    allowDrag = false;
-    startSwinging();
   });
   can.addEventListener("mousemove", (e) => {
     if (!ballDragged) {
@@ -49,11 +53,25 @@ export function init() {
         e.clientX - ballDragged.anchorX
       ) -
       Math.PI / 2;
-    if (mouseAngle < 0) {
-      mouseAngle = Math.PI / 2;
+    if (dragDirection < 0) {
+      if (mouseAngle < 0) {
+        mouseAngle = Math.PI / 2;
+      }
+    } else {
+      if (mouseAngle > 0) {
+        mouseAngle = -Math.PI / 2;
+      }
     }
     setBallPosition(ballDragged, mouseAngle);
 
     // TO DO - inform model and view of temporary repositioning of ball
   });
+}
+
+export function userInput() {
+  console.log("gathering input");
+  // open menu box
+  // handle the user input for ballNum, stringLength, ballRadius, and ballMass
+  // using buttons with restrictions on min/max values
+  // if mousedown to drag ball, close menu box
 }
