@@ -1,0 +1,44 @@
+#menuIcon {
+  background-image: url("menuButton.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  right: 0.5rem;
+  top: 0.5rem;
+  z-index: 10;
+  border-radius: 1.5rem;
+}
+
+.menuIconHighlight {
+  background-color: antiquewhite;
+}
+
+.menuIconUnhighlight {
+  background-color: none;
+}
+
+#menuPanel {
+  height: 20rem;
+  width: 15rem;
+  background-color: antiquewhite;
+  border-color: black;
+  border-radius: 1rem;
+  display: none;
+  right: 2rem;
+  top: 2rem;
+  position: absolute;
+}
+
+#shinyBall {
+  display: none;
+}
+
+#startButton {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}

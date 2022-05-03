@@ -11,19 +11,49 @@ import {
 let ballDragged = null;
 let allowDrag = true;
 let dragDirection = 0;
+let showingPanel = false;
+let menuIcon;
 
 export function init() {
   console.log("initializing Controller");
   document.getElementById("startButton").addEventListener("click", () => {
     console.log("button click");
     document.getElementById("startButton").style.display = "none";
-    // document.getElementById("menuButton").style.display = "initial"; trying to only make the button visible once start button is clicked
     start();
   });
   // document.getElementById("menuButton").addEventListener("click", () => {
   //   console.log("menu click");
   //   userInput();
   // });
+  menuIcon = document.getElementById("menuIcon");
+  menuIcon.addEventListener("mouseenter", () => {
+    if (!showingPanel) {
+      menuIcon.classList.remove("menuIconUnhighlight");
+      menuIcon.classList.add("menuIconHighlight");
+    } else {
+      menuIcon.classList.remove("menuIconHighlight");
+      menuIcon.classList.add("menuIconUnhighlight");
+    }
+  });
+  menuIcon.addEventListener("mouseleave", () => {
+    if (!showingPanel) {
+      menuIcon.classList.remove("menuIconHighlight");
+      menuIcon.classList.add("menuIconUnhighlight");
+    } else {
+      menuIcon.classList.remove("menuIconUnhighlight");
+      menuIcon.classList.add("menuIconHighlight");
+    }
+  });
+  document.getElementById("menuIcon").addEventListener("click", () => {
+    if (!showingPanel) {
+      console.log("menu button click");
+      showingPanel = true;
+      document.getElementById("menuPanel").style.display = "block";
+    } else {
+      showingPanel = false;
+      document.getElementById("menuPanel").style.display = "none";
+    }
+  });
   can.addEventListener("mousedown", (e) => {
     if (!allowDrag) {
       return;

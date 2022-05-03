@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="stylesheet" href="style.css" />
     <title>2d Physics Sim</title>
     <script type="module">
       import { run } from "./app/app.js";
@@ -12,14 +13,24 @@
     </script>
   </head>
   <body>
-    <button
-      id="startButton"
-      style="position: absolute; left: 0; top: 0; z-index: 10"
-    >
-      start
-    </button>
-    <!-- <div id="menuIcon" style="background-image: url('menuButton.jpeg'); position: absolute; "></div> -->
-    <div id="menuPanel"></div>
+    <button id="startButton">start</button>
+    <div id="menuIcon" class="menuIconUnhighlight"></div>
+    <div id="menuPanel">
+      <p>Ball mass</p>
+      <p>Ball radius</p>
+      <p>Ball number</p>
+      <p>String length</p>
+      <!-- <div class="sliderContainer" style="width: 100%;">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange" style="
+        -webkit-appearance: none;  /* Override default CSS styles */
+        appearance: none;
+        width: 100%; /* Full-width */
+        height: 25px; /* Specified height */
+        background: #d3d3d3; /* Grey background */
+        outline: none; /* Remove outline */
+        ">
+      </div> -->
+    </div>
     <!-- <button
       id="menuButton"
       style="
@@ -34,7 +45,7 @@
     >
       <img src="./menuButton.jpeg" />
     </button> -->
-    <img src="shinyBall2.png" id="shinyBall" style="display: none" />
+    <img src="shinyBall2.png" id="shinyBall" />
   </body>
 </html>
 
