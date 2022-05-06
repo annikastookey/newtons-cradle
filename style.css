@@ -21,7 +21,6 @@
 }
 
 #menuPanel {
-  height: 20rem;
   width: 15rem;
   background-color: antiquewhite;
   border-color: black;
@@ -30,6 +29,15 @@
   right: 2rem;
   top: 2rem;
   position: absolute;
+  z-index: 9;
+}
+
+#menuPanel > p {
+  padding-left: 0.5rem;
+}
+
+.centeringContainer {
+  text-align: center;
 }
 
 #shinyBall {
@@ -37,8 +45,41 @@
 }
 
 #startButton {
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 10;
+  font-size: 1.5rem;
+  font-family: "Times New Roman", Times, serif;
+  margin: 0.5rem;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 95%;
+  height: 15px;
+  border-radius: 5px;
+  background: gray;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: black;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: black;
+  cursor: pointer;
 }

@@ -13,38 +13,56 @@
     </script>
   </head>
   <body>
-    <button id="startButton">start</button>
     <div id="menuIcon" class="menuIconUnhighlight"></div>
     <div id="menuPanel">
       <p>Ball mass</p>
+      <div class="centeringContainer">
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="50"
+          class="slider"
+          id="massSlider"
+        />
+      </div>
       <p>Ball radius</p>
+      <div class="centeringContainer">
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="50"
+          class="slider"
+          id="radiusSlider"
+        />
+      </div>
       <p>Ball number</p>
+      <div class="centeringContainer">
+        <input
+          type="range"
+          min="1"
+          max="5"
+          value="3"
+          class="slider"
+          id="numberSlider"
+        />
+      </div>
       <p>String length</p>
-      <!-- <div class="sliderContainer" style="width: 100%;">
-        <input type="range" min="1" max="100" value="50" class="slider" id="myRange" style="
-        -webkit-appearance: none;  /* Override default CSS styles */
-        appearance: none;
-        width: 100%; /* Full-width */
-        height: 25px; /* Specified height */
-        background: #d3d3d3; /* Grey background */
-        outline: none; /* Remove outline */
-        ">
-      </div> -->
+      <div class="centeringContainer">
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value="50"
+          class="slider"
+          id="lengthSlider"
+        />
+      </div>
+      <div class="centeringContainer">
+        <button id="startButton">start</button>
+      </div>
     </div>
-    <!-- <button
-      id="menuButton"
-      style="
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: 10;
-        width: 5;
-        height: 5;
-        /* width and height not working */
-      "
-    >
-      <img src="./menuButton.jpeg" />
-    </button> -->
     <img src="shinyBall2.png" id="shinyBall" />
   </body>
 </html>

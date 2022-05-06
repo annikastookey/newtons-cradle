@@ -1,4 +1,5 @@
-1. find a better favicon/edit current one
-2. rethink canvas height
-3. solver relative aspect drawing ratio
-4. fix mouseAngle when dragging into other balls
+- rethink canvas height
+- solve relative aspect drawing ratio
+- drag multiple balls
+- actually do something with the user input
+- display the values on the sliders

@@ -13,18 +13,34 @@ let allowDrag = true;
 let dragDirection = 0;
 let showingPanel = false;
 let menuIcon;
+let massSlider;
+let radiusSlider;
+let numberSlider;
+let lengthSlider;
+
+function getBallMass() {
+  return Number(massSlider.value);
+}
+
+function getBallNum() {
+  return Number(numberSlider.value);
+}
+
+function getBallRadius() {
+  return Number(radiusSlider.value);
+}
+
+function getStringLength() {
+  return Number(lengthSlider.value);
+}
 
 export function init() {
   console.log("initializing Controller");
   document.getElementById("startButton").addEventListener("click", () => {
-    console.log("button click");
-    document.getElementById("startButton").style.display = "none";
-    start();
+    showingPanel = false;
+    document.getElementById("menuPanel").style.display = "none";
+    start(getStringLength(), getBallMass(), getBallRadius(), getBallNum());
   });
-  // document.getElementById("menuButton").addEventListener("click", () => {
-  //   console.log("menu click");
-  //   userInput();
-  // });
   menuIcon = document.getElementById("menuIcon");
   menuIcon.addEventListener("mouseenter", () => {
     if (!showingPanel) {
@@ -44,7 +60,7 @@ export function init() {
       menuIcon.classList.add("menuIconHighlight");
     }
   });
-  document.getElementById("menuIcon").addEventListener("click", () => {
+  menuIcon.addEventListener("click", () => {
     if (!showingPanel) {
       console.log("menu button click");
       showingPanel = true;
@@ -54,6 +70,7 @@ export function init() {
       document.getElementById("menuPanel").style.display = "none";
     }
   });
+  initSliders();
   can.addEventListener("mousedown", (e) => {
     if (!allowDrag) {
       return;
@@ -98,10 +115,21 @@ export function init() {
   });
 }
 
-export function userInput() {
-  console.log("gathering input");
-  // open menu box
-  // handle the user input for ballNum, stringLength, ballRadius, and ballMass
-  // using buttons with restrictions on min/max values
-  // if mousedown to drag ball, close menu box
+function initSliders() {
+  massSlider = document.getElementById("massSlider");
+  massSlider.addEventListener("input", () => {
+    console.log(massSlider.value);
+  });
+  radiusSlider = document.getElementById("radiusSlider");
+  radiusSlider.addEventListener("input", () => {
+    console.log(radiusSlider.value);
+  });
+  numberSlider = document.getElementById("numberSlider");
+  numberSlider.addEventListener("input", () => {
+    console.log(numberSlider.value);
+  });
+  lengthSlider = document.getElementById("lengthSlider");
+  lengthSlider.addEventListener("input", () => {
+    console.log(lengthSlider.value);
+  });
 }
