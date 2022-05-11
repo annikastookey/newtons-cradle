@@ -5,6 +5,10 @@ import {
   setBallPosition,
   balls,
   startSwinging,
+  modelAspectRatio,
+  updateStringLength,
+  updateBallRadius,
+  updateBallNum,
 } from "../model/model.js";
 // import { moveBall } from "../model/model.js";
 
@@ -17,10 +21,6 @@ let massSlider;
 let radiusSlider;
 let numberSlider;
 let lengthSlider;
-
-function getBallMass() {
-  return Number(massSlider.value);
-}
 
 function getBallNum() {
   return Number(numberSlider.value);
@@ -39,7 +39,7 @@ export function init() {
   document.getElementById("startButton").addEventListener("click", () => {
     showingPanel = false;
     document.getElementById("menuPanel").style.display = "none";
-    start(getStringLength(), getBallMass(), getBallRadius(), getBallNum());
+    start(getStringLength(), getBallRadius(), getBallNum());
   });
   menuIcon = document.getElementById("menuIcon");
   menuIcon.addEventListener("mouseenter", () => {
@@ -116,20 +116,16 @@ export function init() {
 }
 
 function initSliders() {
-  massSlider = document.getElementById("massSlider");
-  massSlider.addEventListener("input", () => {
-    console.log(massSlider.value);
-  });
   radiusSlider = document.getElementById("radiusSlider");
   radiusSlider.addEventListener("input", () => {
-    console.log(radiusSlider.value);
+    updateBallRadius(Number(radiusSlider.value));
   });
   numberSlider = document.getElementById("numberSlider");
   numberSlider.addEventListener("input", () => {
-    console.log(numberSlider.value);
+    updateBallNum(Number(numberSlider.value));
   });
   lengthSlider = document.getElementById("lengthSlider");
   lengthSlider.addEventListener("input", () => {
-    console.log(lengthSlider.value);
+    updateStringLength(Number(lengthSlider.value));
   });
 }

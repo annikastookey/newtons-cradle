@@ -105,3 +105,49 @@ export function setBallPosition(ball, angle) {
 export function startSwinging() {
   isSwinging = true;
 }
+
+export function updateStringLength(_stringLength) {
+  stringLength = _stringLength;
+  modelWidth = 2 * stringLength + 2 * ballNum * ballRadius;
+  modelHeight = stringLength + ballRadius;
+  modelAspectRatio = modelWidth / modelHeight;
+  for (let i = 0; i < ballNum; i++) {
+    balls[i].updateStringLength(
+      ballRadius + stringLength + 2 * i * ballRadius,
+      stringLength
+    );
+  }
+}
+
+export function updateBallRadius(_ballRadius) {
+  ballRadius = _ballRadius;
+  modelWidth = 2 * stringLength + 2 * ballNum * ballRadius;
+  modelHeight = stringLength + ballRadius;
+  modelAspectRatio = modelWidth / modelHeight;
+  for (let i = 0; i < ballNum; i++) {
+    balls[i].updateBallRadius(
+      ballRadius + stringLength + 2 * i * ballRadius,
+      ballRadius,
+      ballRadius
+    );
+  }
+}
+
+export function updateBallNum(_ballNum) {
+  ballNum = _ballNum;
+  modelWidth = 2 * stringLength + 2 * ballNum * ballRadius;
+  modelAspectRatio = modelWidth / modelHeight;
+  while (balls.pop());
+  for (let i = 0; i < ballNum; i++) {
+    balls.push(
+      new Ball(
+        ballRadius + stringLength + 2 * i * ballRadius,
+        ballRadius,
+        stringLength,
+        Math.PI / 2,
+        ballMass,
+        ballRadius
+      )
+    );
+  }
+}

@@ -1,5 +1,6 @@
 - rethink canvas height
 - solve relative aspect drawing ratio
 - drag multiple balls
-- actually do something with the user input
 - display the values on the sliders
+- show unmoving balls at start for adjustment purposes
+- allow restart

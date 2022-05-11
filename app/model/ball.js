@@ -63,4 +63,13 @@ export class Ball {
       this.angularVelocity *= -1;
     }
   }
+  updateBallRadius(anchorX, anchorY, ballRadius) {
+    this.anchorX = anchorX;
+    this.anchorY = anchorY;
+    this.ballRadius = ballRadius;
+  }
+  updateStringLength(anchorX, stringLength) {
+    this.anchorX = anchorX;
+    this.stringLength = stringLength;
+  }
 }

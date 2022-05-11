@@ -25,7 +25,7 @@ export function run() {
   // requestAnimationFrame(loop);
 }
 
-export function start(stringLength, ballMass, ballRadius, ballNum) {
-  console.log(stringLength, ballMass, ballRadius, ballNum);
+export function start(stringLength, ballRadius, ballNum) {
+  console.log(stringLength, ballRadius, ballNum);
   requestAnimationFrame(loop);
 }
